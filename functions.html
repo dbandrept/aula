@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="functions.js"></script>
+    <script src="classes.js"></script>
+
+    <title>Declaração de variaveis</title>
+</head>
+<body>
+
+    <p>
+        <p><input type ="text" id="txtNome"/></p>
+        <p><input type ="text" id="txtApelido"/></p>
+        <p><input type="date" id="dtDataNasc"></p>
+
+        <p><select id="ddlGenero">
+            <option value="">Selecionar</option>
+            <option value="F">Feminino</option>
+            <option value="M">Masculino</option>
+            <option value="O">Outro</option> 
+        </select></p>
+
+        <p><input type ="checkbox" id="chkPublicidade"/>Aceito publicidade</p>
+
+        <p><textarea id="txtObs"></textarea></p>
+
+        <p><input type ="button" id="btnExecuta" onclick="Executa()" value="Executa"/></p>
+        <p><span id="spnnomecompleto"></span></p>
+        
+        <p><span id="spnnomecompletoanonimo"></span></p>
+        
+        <p><span id="spnnomecompletoarrow"></span></p>
+        
+        <p><span id="spnnomecompletoclasse"></span></p>
+
+        <p><span id="spnidade"></span></p>
+
+        <p><span id="spngenero"></span></p>
+    </p>
+</body>
+</html>
+
+<script>
+
+    //esta função tem sempre que ser declarada no script do html porque tem valores proprios no html. Não se encapsula no ficheiro js. No ficheiro JavaScript só se encapsula e passa variáveis lá definidas e usadas.
+
+    function Executa(){
+        var nome= document.getElementById("txtNome").value; //value por ser o value de um formulário
+        var apelido=document.getElementById("txtApelido").value;
+        var datanasce=document.getElementById("dtDataNasc").value;
+        var genero=document.getElementById("ddlGenero").value;
+        var publicidade=document.getElementById("chkPublicidade").checked;
+        var obs = document.getElementById("txtObs").value;
+
+        console.log(nome);
+        console.log(apelido);
+        console.log(datanasce);
+        console.log(genero);
+        console.log(publicidade);
+        console.log(obs);
+
+
+        document.getElementById("spnnomecompleto").innerText = NomeCompleto(nome,apelido); //innerText porque vai escrever na tag span ou p
+
+        document.getElementById("spnnomecompletoanonimo").innerText = FunAnonima(nome,apelido);
+
+        document.getElementById("spnnomecompletoarrow").innerText = farrow(nome,apelido);
+
+        document.getElementById("spnidade").innerText = objIndividuo.Idade();
+
+        document.getElementById("spngenero").innerText = objIndividuo.Genero;
+
+        let objIndividuo =new Individuo(nome,apelido,datanasce,genero,publicidade,obs);
+
+        document.getElementById("spnnomecompletoclasse").innerText = objIndividuo.NomeCompleto();
+
+        console.log(objIndividuo);
+
+        
+    }
+
+
+    /* Ciclos */
+/*
+    for(var i=0;i<100;i++){
+        console.log(i);
+    }
+*/
+
+
+   
+
+</script>
